@@ -18,10 +18,10 @@ class CustomInputField extends StatefulWidget {
   });
 
   @override
-  _CustomInputFieldState createState() => _CustomInputFieldState();
+  CustomInputFieldState createState() => CustomInputFieldState();
 }
 
-class _CustomInputFieldState extends State<CustomInputField> {
+class CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return Padding(

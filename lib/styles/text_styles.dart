@@ -8,6 +8,13 @@ class AppTextStyles {
     fontFamily: 'Montserrat',
   );
 
+  static const TextStyle bigTextImportant = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontFamily: 'Montserrat',
+  );
+
   static const TextStyle sectionTitle = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w700,
@@ -65,6 +72,9 @@ class AppTextStyles {
     fontFamily: 'Montserrat',
   );
 
-  static const TextStyle subtitle =
-      TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black);
+  static const TextStyle subtitle = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w800,
+      color: Colors.black,
+      fontFamily: 'Montserrat');
 }

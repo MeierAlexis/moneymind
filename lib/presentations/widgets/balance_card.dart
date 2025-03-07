@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:moneymind/styles/text_styles.dart';
 
 class BalanceCard extends StatelessWidget {
-  const BalanceCard({super.key});
+  final double income;
+  final double expense;
+
+  const BalanceCard({
+    super.key,
+    required this.income,
+    required this.expense,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final double balance = income - expense; // ✅ Cálculo dinámico del balance
+    final bool isPositive = balance >= 0;
+
     return Container(
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
@@ -13,7 +23,7 @@ class BalanceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(128, 128, 128, 0.3), // ✅ Mejor sombreado
+            color: Color.fromRGBO(128, 128, 128, 0.3),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -25,16 +35,19 @@ class BalanceCard extends StatelessWidget {
         children: [
           const Text('Balance Mensual', style: AppTextStyles.textDetail),
           const SizedBox(height: 8),
-          const Text(
-            '+\$5,000.00',
+
+          // ✅ Balance dinámico con color y signo adecuados
+          Text(
+            '${isPositive ? "+" : ""}\$${balance.toStringAsFixed(2)}',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
-              color: Color(0xff2ECC71),
+              color: isPositive ? const Color(0xff2ECC71) : Colors.red,
               fontFamily: 'Montserrat',
             ),
           ),
-          const SizedBox(height: 16), // 🔹 Espaciado más uniforme
+
+          const SizedBox(height: 16),
 
           // INGRESOS
           Row(
@@ -43,16 +56,13 @@ class BalanceCard extends StatelessWidget {
               Row(
                 children: const [
                   Icon(Icons.circle, size: 10, color: Color(0xff2ECC71)),
-                  SizedBox(width: 6), // 🔹 Espaciado más preciso
-                  Text(
-                    'Ingresos',
-                    style: AppTextStyles.textminDetail,
-                  ),
+                  SizedBox(width: 6),
+                  Text('Ingresos', style: AppTextStyles.textminDetail),
                 ],
               ),
-              const Text(
-                '\$3,500.00',
-                style: TextStyle(
+              Text(
+                '\$${income.toStringAsFixed(2)}',
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
                   color: Colors.black,
@@ -61,6 +71,7 @@ class BalanceCard extends StatelessWidget {
               ),
             ],
           ),
+
           const SizedBox(height: 8),
 
           // GASTOS
@@ -70,16 +81,13 @@ class BalanceCard extends StatelessWidget {
               Row(
                 children: const [
                   Icon(Icons.circle, size: 10, color: Color(0xff3498DB)),
-                  SizedBox(width: 6), // 🔹 Espaciado más preciso
-                  Text(
-                    'Gastos',
-                    style: AppTextStyles.textminDetail,
-                  ),
+                  SizedBox(width: 6),
+                  Text('Gastos', style: AppTextStyles.textminDetail),
                 ],
               ),
-              const Text(
-                '\$5,400.00',
-                style: TextStyle(
+              Text(
+                '\$${expense.toStringAsFixed(2)}',
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
                   color: Colors.black,

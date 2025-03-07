@@ -47,7 +47,7 @@ class CustomBottomNavBar extends StatelessWidget {
         color: backgroundColor,
         elevation: 0, // Evita sombra por defecto del BottomAppBar
         child: SizedBox(
-          height: 60, // Evita overflow asegurando que tenga altura suficiente
+          height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

@@ -62,7 +62,7 @@ class TopExpenses extends StatelessWidget {
           // Agrega un Center para alinear el emoji
           child: Text(
             platformEmoji,
-            style: TextStyle(fontSize: 24), // Usa `style` en lugar de `size`
+            style: TextStyle(fontSize: 24),
           ),
         ),
       ),
